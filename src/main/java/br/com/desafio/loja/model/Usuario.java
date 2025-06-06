@@ -7,6 +7,8 @@ public class Usuario {
     private String email;
     private String senha;
 
+
+
     public Usuario() {}
 
     public Usuario(Long id, String nome, String cpf, String email, String senha) {
@@ -60,4 +62,7 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+
+
 }

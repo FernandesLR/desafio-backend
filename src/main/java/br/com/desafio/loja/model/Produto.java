@@ -21,25 +21,19 @@ public class Produto {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+
 
     public double getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
+
 
     public int getQuantidade() {
         return quantidade;
@@ -48,4 +42,18 @@ public class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+
+    public boolean temEstoque(int quantidadeDesejada) {
+        return this.quantidade >= quantidadeDesejada;
+    }
+
+    public void reduzirEstoque(int quantidadeVendida) {
+        if (temEstoque(quantidadeVendida)) {
+            this.quantidade -= quantidadeVendida;
+        } else {
+            System.out.println("Estoque insuficiente.");
+        }
+    }
+
 }
