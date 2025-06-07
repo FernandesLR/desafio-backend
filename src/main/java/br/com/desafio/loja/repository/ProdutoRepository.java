@@ -10,7 +10,7 @@ import java.util.List;
 public class ProdutoRepository {
     private List<Produto> produtos = new ArrayList<>();
 
-    public void salvar(Produto produto) {
+    public void cadastrar(Produto produto) {
         produtos.add(produto);
     }
 
