@@ -11,7 +11,7 @@ public class UsuarioRepository {
 
     private final List<Usuario> usuarios = new ArrayList<>();
 
-    public void salvar(Usuario usuario) {
+    public void cadastrar(Usuario usuario) {
         usuarios.add(usuario);
     }
 
