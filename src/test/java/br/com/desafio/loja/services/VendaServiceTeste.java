@@ -50,4 +50,24 @@ public class VendaServiceTeste {
         verify(produtoRepository, times(1)).cadastrar(produto);
         verify(vendaRepository, times(1)).cadastrar(any(Venda.class));
     }
+
+    @Test
+    void retornaErroAoRealizarCompraSeProdutoNaoExiste() {
+        Usuario usuario = new Usuario();
+        usuario.setNome("Lucas");
+        usuario.setEmail("lucas@email.com");
+        usuario.setSenha("senha123");
+
+        Produto produto = new Produto(999L, "Produto Inexistente", 50.0, 10);
+        ItemVenda item = new ItemVenda(produto, 1);
+
+        when(produtoRepository.buscarPorId(999L)).thenReturn(null);
+
+        Exception exception = assertThrows(IllegalStateException.class, () ->
+                vendaServices.realizarCompra(usuario, List.of(item))
+        );
+
+        assertEquals("Nenhum item válido para compra", exception.getMessage());
+        verify(vendaRepository, never()).cadastrar(any());
+    }
 }
